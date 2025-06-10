@@ -52,3 +52,29 @@ hit twice <kbd>Ctrl</kbd> + <kbd>C</kbd>
      });
     ```
 - running one test: `test.only`
+
+### Prettier
+
+- install Prettier  
+  `npm install --save-dev --save-exact prettier`
+- configure Prettier
+
+  - exlude files in `.prettierignore`
+
+    ```
+    package-lock.json
+    playwright-report
+    test-results
+
+    ```
+
+  - set rules in `.prettierrc.json`
+    ```
+    {
+        "singleQuote": true
+    }
+    ```
+
+- run Prettier  
+  `npx prettier --write .`
+- additionaly you can install VSC extension: **Prettier**
