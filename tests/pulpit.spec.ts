@@ -30,12 +30,12 @@ test.describe('pulpit tests', () => {
     );
   });
 
-  test('Successful mobile top-up', async ({ page }) => {
+  test.only('Successful mobile top-up', async ({ page }) => {
     const url = 'https://demo-bank.vercel.app/';
     const userId = 'testerLO';
     const userPassword = '1wqr324r435';
 
-    const topUpreceiver = '2';
+    const topUpreceiver = '500 xxx xxx';
     const topUpAmount = '150';
     const expectedMessage = `Doładowanie wykonane! ${topUpAmount},00PLN na numer ${topUpreceiver}`;
   

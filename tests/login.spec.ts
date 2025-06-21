@@ -28,7 +28,7 @@ test.describe('User login to Demobank', () => {
     );
   });
 
-  test.only('Unsuccessful login with too short password', async ({ page }) => {
+  test('Unsuccessful login with too short password', async ({ page }) => {
     const url = 'https://demo-bank.vercel.app/';
     const userId = 'testerLO';
     const incorrectPassword = '1234';
