@@ -3,12 +3,12 @@ import { test, expect } from '@playwright/test';
 test.describe('User login to Demobank', () => {
   
   test.beforeEach(async ({ page }) => {
-    
+
     await page.goto('/')
 
   });
 
-  test.only('Successful login with correct credentials', async ({ page }) => {
+  test('Successful login with correct credentials', async ({ page }) => {
     const userId = 'testerLO';
     const userPassword = '1wqr324r435';
     const expectedUserName = 'Jan Demobankowy';
