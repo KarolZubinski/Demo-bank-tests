@@ -3,11 +3,12 @@ import { test, expect } from '@playwright/test';
 test.describe('User login to Demobank', () => {
   
   test.beforeEach(async ({ page }) => {
-    const url = 'https://demo-bank.vercel.app/';
-    await page.goto(url);
+    
+    await page.goto('/')
+
   });
 
-  test('Successful login with correct credentials', async ({ page }) => {
+  test.only('Successful login with correct credentials', async ({ page }) => {
     const userId = 'testerLO';
     const userPassword = '1wqr324r435';
     const expectedUserName = 'Jan Demobankowy';
