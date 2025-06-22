@@ -30,7 +30,7 @@ test.describe('pulpit tests', () => {
     );
   });
 
-  test.only('Successful mobile top-up', async ({ page }) => {
+  test('Successful mobile top-up', async ({ page }) => {
     const url = 'https://demo-bank.vercel.app/';
     const userId = 'testerLO';
     const userPassword = '1wqr324r435';
