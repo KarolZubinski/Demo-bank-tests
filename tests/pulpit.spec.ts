@@ -12,7 +12,7 @@ test.describe('pulpit tests', () => {
     await page.getByTestId('login-button').click();
   });
 
-  test.only('quick payment with coorect data', async ({ page }) => {
+  test('quick payment with coorect data', async ({ page }) => {
     const receiverId = '2';
     const transferAmount = '150';
     const transferTitle = 'pizza';
@@ -51,11 +51,12 @@ test.describe('pulpit tests', () => {
     await expect(page.locator('#show_messages')).toHaveText(expectedMessage);
   });
 
-    test.only('correct balance after successful mobile top-up', async ({ page }) => {
-      
+  test.only('correct balance after successful mobile top-up', async ({ page }) => {
+
     const topUpreceiver = '500 xxx xxx';
     const topUpAmount = '150';
     const expectedMessage = `Doładowanie wykonane! ${topUpAmount},00PLN na numer ${topUpreceiver}`;
+    const initialBalance = await page.locator('#money_value').innerText();
 
     await page.waitForLoadState('domcontentloaded');
 
