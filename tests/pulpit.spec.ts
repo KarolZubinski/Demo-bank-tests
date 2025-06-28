@@ -55,8 +55,8 @@ test.describe('pulpit tests', () => {
 
     const topUpreceiver = '500 xxx xxx';
     const topUpAmount = '150';
-    const expectedMessage = `Doładowanie wykonane! ${topUpAmount},00PLN na numer ${topUpreceiver}`;
     const initialBalance = await page.locator('#money_value').innerText();
+    const expectedBalance = Number(initialBalance) - Number(topUpAmount);
 
     await page.waitForLoadState('domcontentloaded');
 
@@ -69,7 +69,7 @@ test.describe('pulpit tests', () => {
       name: 'Doładowanie wykonane! 40,00PLN na numer 500 xxx xxx',
     });
 
-    await expect(page.locator('#show_messages')).toHaveText(expectedMessage);
+    await expect(page.locator('#money_value')).toHaveText(`${expectedBalance}`);
   });
 
 });
