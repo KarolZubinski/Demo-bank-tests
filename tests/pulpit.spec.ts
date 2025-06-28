@@ -1,9 +1,10 @@
 import { test, expect } from '@playwright/test';
+import { loginData } from '../test-data/login.data';
 
 test.describe('pulpit tests', () => {
   test.beforeEach(async ({ page }) => {
-    const userId = 'testerLO';
-    const userPassword = '1wqr324r435';
+    const userId = loginData.userId;
+    const userPassword = loginData.password;
 
     await page.goto('/');
 
@@ -51,8 +52,7 @@ test.describe('pulpit tests', () => {
     await expect(page.locator('#show_messages')).toHaveText(expectedMessage);
   });
 
-  test.only('correct balance after successful mobile top-up', async ({ page }) => {
-
+  test('correct balance after successful mobile top-up', async ({ page }) => {
     const topUpreceiver = '500 xxx xxx';
     const topUpAmount = '150';
     const initialBalance = await page.locator('#money_value').innerText();
@@ -71,5 +71,4 @@ test.describe('pulpit tests', () => {
 
     await expect(page.locator('#money_value')).toHaveText(`${expectedBalance}`);
   });
-
 });
