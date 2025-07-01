@@ -13,15 +13,24 @@ test.describe('payment tests', () => {
     await page.getByTestId('login-button').click();
     await page.getByRole('link', { name: 'płatności' }).click();
   });
-
+  
   test('simple payment', async ({ page }) => {
-    
-    await page.getByTestId('transfer_receiver').fill('Jan Nowak');
+    //Arrange
+    const transferReciver = 'Jan Nowak';
+    const transferAcoount = '01 2345 6789 0123 4567 8901 23456';
+    const transferAmount = '222';
+    const expectedMessage = `Przelew wykonany! ${transferAmount},00PLN dla Jan Nowak`;
+
+    //Act
+    await page.getByTestId('transfer_receiver').fill(transferReciver);
     await page
       .getByTestId('form_account_to')
-      .fill('01 2345 6789 0123 4567 8901 23456');
-    await page.getByTestId('form_amount').fill('222');
+      .fill(transferAcoount);
+    await page.getByTestId('form_amount').fill(transferAmount);
     await page.getByRole('button', { name: 'wykonaj przelew' }).click();
     await page.getByTestId('close-button').click();
+
+    //Assert
+    await expect(page.locator('#show_messages')).toHaveText(expectedMessage);
   });
 });
