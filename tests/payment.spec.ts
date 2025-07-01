@@ -13,7 +13,7 @@ test.describe('payment tests', () => {
     await page.getByTestId('login-button').click();
     await page.getByRole('link', { name: 'płatności' }).click();
   });
-  
+
   test('simple payment', async ({ page }) => {
     //Arrange
     const transferReciver = 'Jan Nowak';
@@ -23,9 +23,7 @@ test.describe('payment tests', () => {
 
     //Act
     await page.getByTestId('transfer_receiver').fill(transferReciver);
-    await page
-      .getByTestId('form_account_to')
-      .fill(transferAcoount);
+    await page.getByTestId('form_account_to').fill(transferAcoount);
     await page.getByTestId('form_amount').fill(transferAmount);
     await page.getByRole('button', { name: 'wykonaj przelew' }).click();
     await page.getByTestId('close-button').click();
