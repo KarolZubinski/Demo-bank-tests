@@ -1,17 +1,21 @@
 import { test, expect } from '@playwright/test';
 import { loginData } from '../test-data/login.data';
+import { LoginPage } from '../pages/login.page';
 
 test.describe('User login to Demobank', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/');
   });
 
-  test('Successful login with correct credentials', async ({ page }) => {
+  test.only('Successful login with correct credentials', async ({ page }) => {
     const userId = loginData.userId;
     const userPassword = loginData.password;
     const expectedUserName = 'Jan Demobankowy';
 
-    await page.getByTestId('login-input').fill(userId);
+    const loginPage = new LoginPage(page);
+    await loginPage.loginInput.fill(userId);
+
+    // await page.getByTestId('login-input').fill(userId);
     await page.getByTestId('password-input').fill(userPassword);
     await page.getByTestId('login-button').click();
     await expect(page.getByTestId('user-name')).toHaveText(expectedUserName);
