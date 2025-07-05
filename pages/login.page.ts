@@ -4,6 +4,7 @@ export class LoginPage {
   loginInput: Locator;
   passwordInput: Locator;
   loginButton: Locator;
+  loginError: Locator;
 
 
   constructor(private page: Page) {
@@ -11,5 +12,6 @@ export class LoginPage {
     this.loginButton = this.page.getByTestId('login-button'); 
     this.passwordInput = this.page.getByTestId('password-input');
 
+    this.loginError = this.page.getByTestId('error-login-id')
   }
 }
