@@ -16,7 +16,7 @@ test.describe('pulpit tests', () => {
     await loginPage.loginButton.click();
   });
 
-  test.only('quick payment with coorect data', async ({ page }) => {
+  test('quick payment with coorect data', async ({ page }) => {
     const receiverId = '2';
     const transferAmount = '150';
     const transferTitle = 'pizza';
@@ -71,7 +71,6 @@ test.describe('pulpit tests', () => {
     const expectedBalance = Number(initialBalance) - Number(topUpAmount);
 
     await page.waitForLoadState('domcontentloaded');
-
 
     await pulpitPage.topUpreceiver.selectOption(topUpreceiver);
     await pulpitPage.topUpAmount.fill(topUpAmount);
