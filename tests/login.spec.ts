@@ -15,9 +15,10 @@ test.describe('User login to Demobank', () => {
     const userPassword = loginData.password;
     const expectedUserName = 'Jan Demobankowy';
 
-    await loginPage.loginInput.fill(userId);
-    await loginPage.passwordInput.fill(userPassword);
-    await loginPage.loginButton.click();
+    await loginPage.login(userId, userPassword);
+    // await loginPage.loginInput.fill(userId);
+    // await loginPage.passwordInput.fill(userPassword);
+    // await loginPage.loginButton.click();
 
     await expect(page.getByTestId('user-name')).toHaveText(expectedUserName);
   });
