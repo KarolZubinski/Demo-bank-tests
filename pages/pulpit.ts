@@ -1,4 +1,5 @@
 import { Page, Locator } from '@playwright/test';
+import { SideMenuComponent } from '../components/side-menu.component';
 
 export class PulpitPage {
   receiverSelect: Locator;
@@ -12,8 +13,12 @@ export class PulpitPage {
   topUpAgreement: Locator;
   topUpButton: Locator;
   moneyValueText: Locator;
+  sideMenu: SideMenuComponent;
 
   constructor(private page: Page) {
+
+
+    this.sideMenu = new SideMenuComponent(this.page);
     this.receiverSelect = this.page.locator('#widget_1_transfer_receiver');
     this.amountInput = this.page.locator('#widget_1_transfer_amount');
     this.titleInput = this.page.locator('#widget_1_transfer_title');
