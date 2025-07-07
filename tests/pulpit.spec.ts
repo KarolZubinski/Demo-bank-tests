@@ -4,9 +4,12 @@ import { LoginPage } from '../pages/login.page';
 import { PulpitPage } from '../pages/pulpit';
 
 test.describe('pulpit tests', () => {
+  let pulpitPage: PulpitPage;
+
   test.beforeEach(async ({ page }) => {
     const userId = loginData.userId;
     const userPassword = loginData.password;
+    pulpitPage = new PulpitPage(page);
 
     await page.goto('/');
 
@@ -24,7 +27,7 @@ test.describe('pulpit tests', () => {
 
     await page.waitForLoadState('domcontentloaded');
 
-    const pulpitPage = new PulpitPage(page);
+    
 
     await pulpitPage.receiverSelect.selectOption(receiverId);
     await pulpitPage.amountInput.fill(transferAmount);
@@ -45,7 +48,7 @@ test.describe('pulpit tests', () => {
 
     await page.waitForLoadState('domcontentloaded');
 
-    const pulpitPage = new PulpitPage(page);
+    
 
     await pulpitPage.topUpreceiver.selectOption(topUpreceiver);
     await pulpitPage.topUpAmount.fill(topUpAmount);
@@ -64,7 +67,7 @@ test.describe('pulpit tests', () => {
   });
 
   test('correct balance after successful mobile top-up', async ({ page }) => {
-    const pulpitPage = new PulpitPage(page);
+    
     const topUpreceiver = '500 xxx xxx';
     const topUpAmount = '150';
     const initialBalance = await pulpitPage.moneyValueText.innerText();

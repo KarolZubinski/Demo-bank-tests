@@ -5,9 +5,13 @@ import { PaymentPage } from '../pages/payment.page';
 import { PulpitPage } from '../pages/pulpit';
 
 test.describe('payment tests', () => {
+  let paymentPage: PaymentPage;
+
   test.beforeEach(async ({ page }) => {
     const userId = loginData.userId;
     const userPassword = loginData.password;
+
+    paymentPage = new PaymentPage(page);
 
     await page.goto('/');
 
@@ -28,7 +32,7 @@ test.describe('payment tests', () => {
     const expectedMessage = `Przelew wykonany! ${transferAmount},00PLN dla Jan Nowak`;
 
     //Act
-    const paymentPage = new PaymentPage(page);
+    
 
     await paymentPage.transferReciver.fill(transferReciver);
     await paymentPage.transferAcoount.fill(transferAcoount);
