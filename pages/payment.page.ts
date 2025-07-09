@@ -10,14 +10,27 @@ export class PaymentPage {
   actionCloseButton: Locator;
 
   constructor(private page: Page) {
+    const sideMenu = new SideMenuComponent(this.page);
 
-     const sideMenu = new SideMenuComponent(this.page);
-    
     this.transferReciver = this.page.getByTestId('transfer_receiver');
     this.transferAcoount = this.page.getByTestId('form_account_to');
     this.transferAmount = this.page.getByTestId('form_amount');
-    this.transferButton = this.page.getByRole('button', { name: 'wykonaj przelew' });
+    this.transferButton = this.page.getByRole('button', {
+      name: 'wykonaj przelew',
+    });
     this.actionCloseButton = this.page.getByTestId('close-button');
     this.showMessage = this.page.locator('#show_messages');
+  }
+
+  async makeTransfer(
+    transferReciver: string,
+    transferAcoount: string,
+    transferAmount: string
+  ): Promise<void> {
+    await this.transferReciver.fill(transferReciver);
+    await this.transferAcoount.fill(transferAcoount);
+    await this.transferAmount.fill(transferAmount);
+    await this.transferButton.click();
+    await this.actionCloseButton.click();
   }
 }
