@@ -16,8 +16,6 @@ export class PulpitPage {
   sideMenu: SideMenuComponent;
 
   constructor(private page: Page) {
-
-
     this.sideMenu = new SideMenuComponent(this.page);
     this.receiverSelect = this.page.locator('#widget_1_transfer_receiver');
     this.amountInput = this.page.locator('#widget_1_transfer_amount');
@@ -35,5 +33,30 @@ export class PulpitPage {
       name: 'doładuj telefon',
     });
     this.moneyValueText = this.page.locator('#money_value');
+  }
+
+  async executeQuickPayment(
+    receiverId: string,
+    transferAmount: string,
+    transferTitle: string
+  ): Promise<void> {
+    await this.receiverSelect.selectOption(receiverId);
+    await this.amountInput.fill(transferAmount);
+    await this.titleInput.fill(transferTitle);
+
+    await this.executeButton.click();
+    await this.closeButton.click();
+  }
+
+  async executeMobileTopUp(
+    topUpreceiver: string,
+    topUpAmount: string
+  ): Promise<void> {
+    await this.topUpreceiver.selectOption(topUpreceiver);
+    await this.topUpAmount.fill(topUpAmount);
+    await this.topUpAgreement.click();
+    await this.topUpButton.click();
+
+    await this.closeButton.click();
   }
 }

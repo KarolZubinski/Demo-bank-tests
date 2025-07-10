@@ -25,14 +25,17 @@ test.describe('pulpit tests', () => {
 
     await page.waitForLoadState('domcontentloaded');
 
-    
+    await pulpitPage.executeQuickPayment(
+      receiverId,
+      transferAmount,
+      transferTitle
+    );
 
-    await pulpitPage.receiverSelect.selectOption(receiverId);
-    await pulpitPage.amountInput.fill(transferAmount);
-    await pulpitPage.titleInput.fill(transferTitle);
-
-    await pulpitPage.executeButton.click();
-    await pulpitPage.closeButton.click();
+    // await pulpitPage.receiverSelect.selectOption(receiverId);
+    // await pulpitPage.amountInput.fill(transferAmount);
+    // await pulpitPage.titleInput.fill(transferTitle);
+    // await pulpitPage.executeButton.click();
+    // await pulpitPage.closeButton.click();
 
     await expect(pulpitPage.messageText).toHaveText(
       `Przelew wykonany! ${expectedTransferReceiver} - ${transferAmount},00PLN - ${transferTitle}`
@@ -46,17 +49,12 @@ test.describe('pulpit tests', () => {
 
     await page.waitForLoadState('domcontentloaded');
 
-    
-
-    await pulpitPage.topUpreceiver.selectOption(topUpreceiver);
-    await pulpitPage.topUpAmount.fill(topUpAmount);
-    await pulpitPage.topUpAgreement.click();
-    await pulpitPage.topUpButton.click();
+    await pulpitPage.executeMobileTopUp(topUpreceiver, topUpAmount);
     // await page.locator('#widget_1_topup_receiver').selectOption(topUpreceiver);
     // await page.locator('#widget_1_topup_amount').fill(topUpAmount);
     // await page.locator('#uniform-widget_1_topup_agreement span').click();
     // await page.getByRole('button', { name: 'doładuj telefon' }).click();
-    await pulpitPage.closeButton.click();
+
     await page.getByRole('link', {
       name: 'Doładowanie wykonane! 40,00PLN na numer 500 xxx xxx',
     });
@@ -65,7 +63,6 @@ test.describe('pulpit tests', () => {
   });
 
   test('correct balance after successful mobile top-up', async ({ page }) => {
-    
     const topUpreceiver = '500 xxx xxx';
     const topUpAmount = '150';
     const initialBalance = await pulpitPage.moneyValueText.innerText();
@@ -73,11 +70,7 @@ test.describe('pulpit tests', () => {
 
     await page.waitForLoadState('domcontentloaded');
 
-    await pulpitPage.topUpreceiver.selectOption(topUpreceiver);
-    await pulpitPage.topUpAmount.fill(topUpAmount);
-    await pulpitPage.topUpAgreement.click();
-    await pulpitPage.topUpButton.click();
-    await pulpitPage.closeButton.click();
+    await pulpitPage.executeMobileTopUp(topUpreceiver, topUpAmount);
     await page.getByRole('link', {
       name: 'Doładowanie wykonane! 40,00PLN na numer 500 xxx xxx',
     });
