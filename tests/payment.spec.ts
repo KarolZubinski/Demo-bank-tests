@@ -22,19 +22,32 @@ test.describe('payment tests', () => {
     await pulpitPage.sideMenu.paymentbutton.click();
   });
 
-  test('simple payment', {tag: ["@payment", "@integration"]}, async ({ page }) => {
-    //Arrange
-    const transferReciver = 'Jan Nowak';
-    const transferAcoount = '01 2345 6789 0123 4567 8901 23456';
-    const transferAmount = '222';
-    const expectedMessage = `Przelew wykonany! ${transferAmount},00PLN dla Jan Nowak`;
+  test(
+    'simple payment',
+    {
+      tag: ['@payment', '@integration'],
+      // annotation: {
+      //   type: 'documantaition',
+      //   description: 'https://jaktestowac.pl/lesson/pw1s04l04/',
+      // },
+    },
+    async ({ page }) => {
+      //Arrange
+      const transferReciver = 'Jan Nowak';
+      const transferAcoount = '01 2345 6789 0123 4567 8901 23456';
+      const transferAmount = '222';
+      const expectedMessage = `Przelew wykonany! ${transferAmount},00PLN dla Jan Nowak`;
 
-    //Act
-    
-    await paymentPage.makeTransfer(transferReciver,transferAcoount,transferAmount);
-  
-  
-    //Assert
-    await expect(paymentPage.showMessage).toHaveText(expectedMessage);
-  });
+      //Act
+
+      await paymentPage.makeTransfer(
+        transferReciver,
+        transferAcoount,
+        transferAmount
+      );
+
+      //Assert
+      await expect(paymentPage.showMessage).toHaveText(expectedMessage);
+    }
+  );
 });
