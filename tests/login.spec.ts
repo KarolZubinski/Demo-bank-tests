@@ -10,7 +10,7 @@ test.describe('User login to Demobank', () => {
     loginPage = new LoginPage(page);
   });
 
-  test('Successful login with correct credentials @login', async ({ page }) => {
+  test('Successful login with correct credentials @login @smoke', async ({ page }) => {
     const userId = loginData.userId;
     const userPassword = loginData.password;
     const expectedUserName = 'Jan Demobankowy';

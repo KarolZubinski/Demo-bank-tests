@@ -17,7 +17,7 @@ test.describe('pulpit tests', () => {
     await loginPage.login(userId, userPassword);
   });
 
-  test('quick payment with coorect data', async ({ page }) => {
+  test('quick payment with coorect data @pulpit @integration', async ({ page }) => {
     const receiverId = '2';
     const transferAmount = '150';
     const transferTitle = 'pizza';
@@ -42,7 +42,7 @@ test.describe('pulpit tests', () => {
     );
   });
 
-  test('Successful mobile top-up', async ({ page }) => {
+  test('Successful mobile top-up @pulpit @integration', async ({ page }) => {
     const topUpreceiver = '500 xxx xxx';
     const topUpAmount = '150';
     const expectedMessage = `Doładowanie wykonane! ${topUpAmount},00PLN na numer ${topUpreceiver}`;
@@ -62,7 +62,7 @@ test.describe('pulpit tests', () => {
     await expect(pulpitPage.messageText).toHaveText(expectedMessage);
   });
 
-  test('correct balance after successful mobile top-up', async ({ page }) => {
+  test('correct balance after successful mobile top-up @pulpit @integration', async ({ page }) => {
     const topUpreceiver = '500 xxx xxx';
     const topUpAmount = '150';
     const initialBalance = await pulpitPage.moneyValueText.innerText();

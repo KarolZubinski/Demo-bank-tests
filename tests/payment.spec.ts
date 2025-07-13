@@ -22,7 +22,7 @@ test.describe('payment tests', () => {
     await pulpitPage.sideMenu.paymentbutton.click();
   });
 
-  test('simple payment', async ({ page }) => {
+  test('simple payment @payment @integration', async ({ page }) => {
     //Arrange
     const transferReciver = 'Jan Nowak';
     const transferAcoount = '01 2345 6789 0123 4567 8901 23456';
