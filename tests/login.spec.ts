@@ -10,7 +10,7 @@ test.describe('User login to Demobank', () => {
     loginPage = new LoginPage(page);
   });
 
-  test('Successful login with correct credentials @login @smoke', async ({ page }) => {
+  test('Successful login with correct credentials', {tag: ["@login", "@smoke"]}, async ({ page }) => {
     const userId = loginData.userId;
     const userPassword = loginData.password;
     const expectedUserName = 'Jan Demobankowy';
@@ -23,7 +23,7 @@ test.describe('User login to Demobank', () => {
     await expect(page.getByTestId('user-name')).toHaveText(expectedUserName);
   });
 
-  test('Unsuccessful login with too short username @login', async ({ page }) => {
+  test('Unsuccessful login with too short username', {tag: ["@login"]}, async ({ page }) => {
     const incorrecrUserId = 'tester';
     const expectedErrorMessage = 'identyfikator ma min. 8 znaków';
 
@@ -34,7 +34,7 @@ test.describe('User login to Demobank', () => {
     await expect(loginPage.loginError).toHaveText(expectedErrorMessage);
   });
 
-  test('Unsuccessful login with too short password @login', async ({ page }) => {
+  test('Unsuccessful login with too short password',{tag: ["@login"]}, async ({ page }) => {
     const userId = loginData.userId;
     const incorrectPassword = '1234';
     const expectedErrorMessage = 'hasło ma min. 8 znaków';
