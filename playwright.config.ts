@@ -35,7 +35,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
   ['list'],
-  ['html', { open: 'on-failure' }]
+  ['html', { open: 'always' }]
 ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
