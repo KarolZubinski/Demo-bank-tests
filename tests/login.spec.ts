@@ -14,7 +14,7 @@ test.describe('User login to Demobank', () => {
     'Successful login with correct credentials',
     {
       tag: ['@login', '@smoke'],
-      annotation: { type: 'Happy path', description: "Basic happy test for login" },
+      annotation: { type: 'Happy path', description: "Basic happy test for login " },
     },
     async ({ page }) => {
       const userId = loginData.userId;
