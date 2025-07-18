@@ -14,7 +14,10 @@ test.describe('User login to Demobank', () => {
     'Successful login with correct credentials',
     {
       tag: ['@login', '@smoke'],
-      annotation: { type: 'Happy path', description: "Basic happy test for login " },
+      annotation: {
+        type: 'Happy path',
+        description: 'Basic happy test for login ',
+      },
     },
     async ({ page }) => {
       const userId = loginData.userId;
@@ -27,7 +30,7 @@ test.describe('User login to Demobank', () => {
       // await loginPage.loginButton.click();
 
       await expect(page.getByTestId('user-name')).toHaveText(expectedUserName);
-    }
+    },
   );
 
   test(
@@ -41,7 +44,7 @@ test.describe('User login to Demobank', () => {
       await loginPage.passwordInput.click();
 
       await expect(loginPage.loginError).toHaveText(expectedErrorMessage);
-    }
+    },
   );
 
   test(
@@ -57,6 +60,6 @@ test.describe('User login to Demobank', () => {
       await loginPage.passwordInput.blur();
 
       await expect(loginPage.passwordError).toHaveText(expectedErrorMessage);
-    }
+    },
   );
 });

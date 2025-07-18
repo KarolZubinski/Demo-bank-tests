@@ -43,11 +43,11 @@ test.describe('payment tests', () => {
       await paymentPage.makeTransfer(
         transferReciver,
         transferAcoount,
-        transferAmount
+        transferAmount,
       );
 
       //Assert
       await expect(paymentPage.showMessage).toHaveText(expectedMessage);
-    }
+    },
   );
 });

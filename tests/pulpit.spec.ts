@@ -31,7 +31,7 @@ test.describe('pulpit tests', () => {
       await pulpitPage.executeQuickPayment(
         receiverId,
         transferAmount,
-        transferTitle
+        transferTitle,
       );
 
       // await pulpitPage.receiverSelect.selectOption(receiverId);
@@ -41,9 +41,9 @@ test.describe('pulpit tests', () => {
       // await pulpitPage.closeButton.click();
 
       await expect(pulpitPage.messageText).toHaveText(
-        `Przelew wykonany! ${expectedTransferReceiver} - ${transferAmount},00PLN - ${transferTitle}`
+        `Przelew wykonany! ${expectedTransferReceiver} - ${transferAmount},00PLN - ${transferTitle}`,
       );
-    }
+    },
   );
 
   test(
@@ -67,7 +67,7 @@ test.describe('pulpit tests', () => {
       });
 
       await expect(pulpitPage.messageText).toHaveText(expectedMessage);
-    }
+    },
   );
 
   test(
@@ -87,6 +87,6 @@ test.describe('pulpit tests', () => {
       });
 
       await expect(pulpitPage.moneyValueText).toHaveText(`${expectedBalance}`);
-    }
+    },
   );
 });
