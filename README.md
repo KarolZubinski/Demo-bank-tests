@@ -20,6 +20,8 @@
   `npx playwright show-report`
   run Trace Viewer on zip file
   `npx playwright show-trace trace.zip`
+  run prettier formater
+  `npx prettier --write .`
 - cancelling Node process  
   hit twice <kbd>Ctrl</kbd> + <kbd>C</kbd>
 
