@@ -30,7 +30,7 @@ test.describe('User login to Demobank', () => {
       // await loginPage.loginButton.click();
 
       await expect(page.getByTestId('user-name')).toHaveText(expectedUserName);
-    },
+    }
   );
 
   test(
@@ -44,7 +44,7 @@ test.describe('User login to Demobank', () => {
       await loginPage.passwordInput.click();
 
       await expect(loginPage.loginError).toHaveText(expectedErrorMessage);
-    },
+    }
   );
 
   test(
@@ -60,6 +60,6 @@ test.describe('User login to Demobank', () => {
       await loginPage.passwordInput.blur();
 
       await expect(loginPage.passwordError).toHaveText(expectedErrorMessage);
-    },
+    }
   );
 });
