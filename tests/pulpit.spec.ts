@@ -18,7 +18,7 @@ test.describe('pulpit tests', () => {
   });
 
   test(
-    'quick payment with coorect data',
+    'quick payment with correct data',
     { tag: ['@pulpit', '@integration'] },
     async ({ page }) => {
       const receiverId = '2';
